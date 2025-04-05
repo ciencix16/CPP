@@ -32,16 +32,16 @@ int elementMinimalny(int tablica[], int rozmiarTablicy)
 int elementMaxymalny(int tablica[], int rozmiarTablicy)
 {
   {
-  int max = tablica[0];
-  for (int i = 0; i < rozmiarTablicy; i++)
-  {
-    if (tablica[i] > max)
+    int max = tablica[0];
+    for (int i = 0; i < rozmiarTablicy; i++)
     {
-      max = tablica[i];
+      if (tablica[i] > max)
+      {
+        max = tablica[i];
+      }
     }
+    return max;
   }
-  return max;
-}
 }
 int main()
 {
@@ -49,7 +49,7 @@ int main()
   wypelnijLosowo(liczby, 10);
   wypiszTablice(liczby, 10);
   cout << endl;
-  cout<<elementMaxymalny(liczby,10)<<endl;
-  cout<<elementMinimalny(liczby,10);
+  cout << elementMaxymalny(liczby, 10) << endl;
+  cout << elementMinimalny(liczby, 10);
   return 0;
 }

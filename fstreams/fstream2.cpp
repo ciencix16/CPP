@@ -4,31 +4,49 @@ using namespace std;
 
 int main()
 {
-    int zPliku, iterator = 0;
-    fstream plik;
-    plik.open("wyjscie1.txt", ios::in);
-    while (!plik.eof())
+    int zPliku;
+    int iterator = 0;
+
+    // First read to count the numbers
+    ifstream plik("wyjscie2.txt");
+    if (!plik.is_open())
     {
-        plik >> zPliku;
-        cout << zPliku << endl;
+        cerr << "Nie mozna otworzyc pliku!" << endl;
+        return 1;
+    }
+
+    while (plik >> zPliku)
+    {
         iterator++;
     }
-    int *liczby;
-    liczby = new int[iterator];
     plik.close();
-    plik.open("wyjscie1.txt", ios::in);
-    int i = 0;
-    while (!plik.eof())
-    {
 
-        plik >> zPliku;
-        liczby[i] = zPliku;
-        i++;
+    // Allocate memory
+    int *liczby = new int[iterator];
+
+    // Reopen the file for second read
+    plik.open("wyjscie2.txt");
+    if (!plik.is_open())
+    {
+        cerr << "Nie mozna otworzyc pliku ponownie!" << endl;
+        delete[] liczby;
+        return 1;
+    }
+
+    int i = 0;
+    while (plik >> zPliku)
+    {
+        liczby[i++] = zPliku;
     }
     plik.close();
-    for (short i = 0; i < iterator; i++)
+
+    // Display the numbers
+    for (int j = 0; j < iterator; j++)
     {
-        cout << liczby[i] << ' ';
+        cout << liczby[j] << ' ';
     }
+    cout << endl;
+
+    delete[] liczby;
     return 0;
 }

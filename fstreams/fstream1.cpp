@@ -6,9 +6,9 @@ int main()
 {
     int suma;
     int zPliku;
-    ofstream zapis("wyjscie.txt");
+    ofstream zapis("wyjscie1.txt");
     zapis << 5 << " " << 10 << " " << 15;
-    ifstream odczyt("wyjscie.txt");
+    ifstream odczyt("wyjscie1.txt");
     while (!odczyt.eof())
     {
         odczyt >> zPliku;
